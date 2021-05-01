@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            float: left;
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ★☆ -->
+    <ul class="box">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+    <script>
+        $(".box li").mouseenter(function () {
+            let idx = $(this).index()
+            for (var i = 0; i <= idx; i++) {
+                $(".box li").eq(i).html("★")
+            }
+        })
+        $(".box li").mouseleave(function () {
+            let idx = $(this).index()
+            for (var i = idx; i >= 0; i--) {
+                $(".box li").eq(i).html("☆")
+            }
+        })
+
+    </script>
+</body>
+
+</html>

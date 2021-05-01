@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="fir" value="1">
+    <select name="" id="method">
+        <option value="">请选择</option>
+        <option value="">+</option>
+        <option value="">-</option>
+        <option value="">*</option>
+        <option value="">/</option>
+    </select>
+    <input type="text" id="sec" value="2">
+    <input type="button" value="=" id="btn">
+    <input type="text" id="thir">
+    <script>
+        $("#btn").click(function () {
+            let $v1 = parseFloat($("#fir").val())
+            let $m1 = $("#method option:selected").html()
+            let $v2 = parseFloat($("#sec").val())
+            let result;
+            switch ($m1) {
+                case "+":
+                    result = $v1 + $v2;
+                    break;
+                case "-":
+                    result = $v1 - $v2;
+                    break;
+                case "*":
+                    result = $v1 * $v2;
+                    break;
+                case "/":
+                    result = $v1 / $v2;
+                    break;
+            }
+            $("#thir").val(result)
+        })
+    </script>
+</body>
+
+</html>

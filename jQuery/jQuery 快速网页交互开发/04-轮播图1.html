@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .carousel {
+            position: relative;
+            width: 700px;
+            height: 360px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .carousel ul li {
+            position: absolute;
+            top: 0;
+            width: 175px;
+            height: 360px;
+            perspective: 50000px;
+            transform-style: preserve-3d;
+            transition: all 1s ease 0s;
+        }
+
+        .carousel ul li:nth-child(1) {
+            left: 0;
+        }
+
+        .carousel ul li:nth-child(2) {
+            left: 175px;
+        }
+
+        .carousel ul li:nth-child(3) {
+            left: 350px;
+        }
+
+        .carousel ul li:nth-child(4) {
+            left: 525px;
+        }
+
+        .carousel ul li div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 360px;
+            background-size: 700px 360px;
+        }
+
+        .carousel ul li div:nth-child(1) {
+            background-image: url(images/pic1.jpg);
+            transform: translateZ(180px);
+        }
+
+        .carousel ul li div:nth-child(2) {
+            background-image: url(images/pic2.jpg);
+            transform: rotateX(90deg) translateZ(180px);
+        }
+
+        .carousel ul li div:nth-child(3) {
+            background-image: url(images/pic3.jpg);
+            transform: rotateX(180deg) translateZ(180px);
+        }
+
+        .carousel ul li div:nth-child(4) {
+            background-image: url(images/pic4.jpg);
+            transform: rotateX(270deg) translateZ(180px);
+        }
+
+        .carousel ul li:nth-child(1) div {
+            background-position: 0 0;
+        }
+
+        .carousel ul li:nth-child(2) div {
+            background-position: -175px 0;
+        }
+
+        .carousel ul li:nth-child(3) div {
+            background-position: -350px 0;
+        }
+
+        .carousel ul li:nth-child(4) div {
+            background-position: -525px 0;
+        }
+
+        .btn {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 50px;
+            border: 1px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+        </ul>
+    </div>
+    <input type="button" value="NEXT" class="btn">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        var $lis = $(".carousel ul li");
+        var sam = 0;
+        var lock = false;
+        $(".btn").click(function () {
+            if (lock) return;
+            lock = true;
+            sam -= 90;
+            $lis.each(function (i) {
+                $(this).css({
+                    "transform": "rotateX(" + sam + "deg)",
+                    "transition-delay": 0.1 * i + "s"
+                })
+            })
+            var time = 1000 + 100 * ($lis.length - 1);
+            setTimeout(function () {
+                lock = false;
+            }, time)
+        })
+    </script>
+</body>
+
+</html>

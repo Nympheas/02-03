@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <style>
+        textarea {
+            width: 400px;
+            height: 300px;
+
+        }
+
+        #info {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        昵称：<input type="text" id="nickname">
+        <br>
+        <textarea name="" id="input"></textarea>
+        <input type="radio" value="" id="unknown">匿名
+        <input type="button" id="submit" value="发表">
+        <br>
+        <textarea name="" id="info"></textarea>
+    </form>
+    <script>
+        $("#submit").click(function () {
+            let name = $("#nickname").val()
+            if ($("#nickname").val() == "" || $("#input").val() == "") {
+                alert("昵称和内容不能是空")
+                return
+            }
+            if($("#unknown").prop("checked")){
+                name = "路人甲"
+            }
+            $("#info").html(name + "\n" + Date() + "\n" + $("#input").val())
+            console.log($("#unknown").check)
+        })
+    </script>
+</body>
+
+</html>
